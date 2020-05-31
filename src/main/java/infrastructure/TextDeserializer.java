@@ -1,4 +1,5 @@
 package infrastructure;
+
 import domain.Word;
 
 import java.io.File;
@@ -9,11 +10,10 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TextDeserializer implements FileDeserializerInterface{
+public class TextDeserializer implements FileDeserializerInterface {
 
     public List<String> deserialize(String file) {
         List<String> words = new ArrayList<String>();
-
         Pattern r = Pattern.compile("([a-z]{5,7})");
         try {
             File myObj = new File("src/main/resources/basiswoorden-gekeurd.txt");
@@ -33,4 +33,4 @@ public class TextDeserializer implements FileDeserializerInterface{
         }
         return words;
     }
-    }
+}
