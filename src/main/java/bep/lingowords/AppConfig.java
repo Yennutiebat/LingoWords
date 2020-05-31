@@ -1,3 +1,5 @@
+package bep.lingowords;
+
 import application.WordProcessor;
 import infrastructure.TextDeserializer;
 import org.springframework.context.annotation.*;
