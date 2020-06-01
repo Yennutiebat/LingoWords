@@ -1,7 +1,5 @@
 package infrastructure;
 
-import domain.Word;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -11,12 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextDeserializer implements FileDeserializerInterface {
-
     public List<String> deserialize(String file) {
         List<String> words = new ArrayList<String>();
         Pattern r = Pattern.compile("([a-z]{5,7})");
         try {
-            File myObj = new File("src/main/resources/basiswoorden-gekeurd.txt");
+            File myObj = new File(file);
             Scanner myReader = new Scanner(myObj);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

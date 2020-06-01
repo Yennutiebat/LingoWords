@@ -9,5 +9,4 @@ public class LingowordsApplication {
     public static void main(String[] args) {
         SpringApplication.run(LingowordsApplication.class, args);
     }
-
 }

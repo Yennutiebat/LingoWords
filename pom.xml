@@ -6,13 +6,14 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.0.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>bep</groupId>
     <artifactId>lingowords</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>lingowords</name>
-    <description>Demo project for Spring Boot</description>
+    <packaging>jar</packaging>
+    <name>lingoWords</name>
+    <description>LingoWords project for lingoGame</description>
 
     <properties>
         <java.version>1.8</java.version>
