@@ -4,6 +4,9 @@ import application.WordProcessor;
 import infrastructure.TextDeserializer;
 import org.springframework.context.annotation.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 @Configuration
 public class AppConfig {
 
@@ -13,9 +16,8 @@ public class AppConfig {
     }
 
     @Bean
-    public WordProcessor WordProcessor() {
+    public WordProcessor WordProcessor() throws IOException {
         TextDeserializer textDeserializer = new TextDeserializer();
         return new WordProcessor(textDeserializer);
     }
-
 }

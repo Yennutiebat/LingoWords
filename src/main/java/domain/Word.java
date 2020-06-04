@@ -13,4 +13,9 @@ public class Word {
     public String getWord() {
         return word;
     }
+
+    public void setWord() {
+        this.word = word;
+    }
+
 }

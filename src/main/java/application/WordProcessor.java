@@ -2,7 +2,6 @@ package application;
 
 import infrastructure.TextDeserializer;
 import org.springframework.stereotype.Service;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,11 +16,12 @@ public class WordProcessor implements WordProcessorInterface {
     private String newFileLocation = "src/main/resources/basiswoorden-aangepast.txt";
     private Pattern r = Pattern.compile("([a-z]{5,7})");
 
-    public WordProcessor(TextDeserializer textDeserializer) {
+    public WordProcessor(TextDeserializer textDeserializer) throws IOException {
         this.textDeserializer = textDeserializer;
         storeWords(filterWords(textDeserializer.deserialize(originalFileLocation)));
     }
 
+    @Override
     public List<String> filterWords(List<String> content) {
         List<String> checkedWords = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
@@ -34,26 +34,17 @@ public class WordProcessor implements WordProcessorInterface {
         return checkedWords;
     }
 
-    public void storeWords(List<String> content) {
-        try {
-            java.io.File myObj = new java.io.File(newFileLocation);
-            if (myObj.createNewFile()) {
-                System.out.println("File created" + myObj.getName());
-            } else {
-                System.out.println("File already exists");
-            }
-        } catch (IOException e) {
-            System.out.println("Could not create file");
-            e.printStackTrace();
+    @Override
+    public void storeWords(List<String> content) throws IOException {
+        java.io.File myObj = new java.io.File(newFileLocation);
+        if (myObj.createNewFile()) {
+            System.out.println("File created" + myObj.getName());
+        } else {
+            System.out.println("File already exists");
         }
-        try {
-            FileWriter myWriter = new FileWriter(newFileLocation);
-            myWriter.write(String.valueOf(content));
-            myWriter.close();
-            System.out.println("Succesfully wrote to file");
-        } catch (IOException e) {
-            System.out.println("Could not write to file");
-            e.printStackTrace();
-        }
+        FileWriter myWriter = new FileWriter(newFileLocation);
+        myWriter.write(String.valueOf(content));
+        myWriter.close();
+        System.out.println("Succesfully wrote to file");
     }
 }
