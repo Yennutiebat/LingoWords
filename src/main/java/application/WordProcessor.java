@@ -1,6 +1,5 @@
 package application;
 
-import infrastructure.TextDeserializer;
 import org.springframework.stereotype.Service;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,15 +10,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class WordProcessor implements WordProcessorInterface {
-    private final TextDeserializer textDeserializer;
-    private String originalFileLocation = "src/main/resources/basiswoorden-gekeurd.txt";
-    private String newFileLocation = "src/main/resources/basiswoorden-aangepast.txt";
-    private Pattern pattern = Pattern.compile("([a-z]{5,7})");
-
-    public WordProcessor(TextDeserializer textDeserializer) throws IOException {
-        this.textDeserializer = textDeserializer;
-        storeWords(filterWords(textDeserializer.deserialize(originalFileLocation)), newFileLocation);
-    }
+    private Pattern pattern = Pattern.compile("(^[a-z]{5,7}$)");
 
     @Override
     public List<String> filterWords(List<String> content) {
@@ -35,14 +26,14 @@ public class WordProcessor implements WordProcessorInterface {
     }
 
     @Override
-    public void storeWords(List<String> content, String filelocation) throws IOException {
-        java.io.File myObj = new java.io.File(filelocation);
+    public void storeWords(List<String> content, String fileLocation) throws IOException {
+        java.io.File myObj = new java.io.File(fileLocation);
         if (myObj.createNewFile()) {
             System.out.println("File created" + myObj.getName());
         } else {
             System.out.println("File already exists");
         }
-        FileWriter myWriter = new FileWriter(filelocation);
+        FileWriter myWriter = new FileWriter(fileLocation);
         myWriter.write(String.valueOf(content));
         myWriter.close();
         System.out.println("Succesfully wrote to file");
