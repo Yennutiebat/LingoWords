@@ -18,7 +18,7 @@ public class TextDeserializerTest {
     @DisplayName("Deserialize")
     public void testDeserialize() throws FileNotFoundException {
         TextDeserializer textDeserializer = new TextDeserializer();
-        List<String> deserializedText = textDeserializer.deserialize("src/test/java/resources/TestText.txt");
+        List<String> deserializedText = textDeserializer.deserialize("src/test/java/resources/deserializetext.txt");
         assertEquals(words, deserializedText);
     }
 

@@ -14,11 +14,11 @@ public class WordProcessor implements WordProcessorInterface {
     private final TextDeserializer textDeserializer;
     private String originalFileLocation = "src/main/resources/basiswoorden-gekeurd.txt";
     private String newFileLocation = "src/main/resources/basiswoorden-aangepast.txt";
-    private Pattern r = Pattern.compile("([a-z]{5,7})");
+    private Pattern pattern = Pattern.compile("([a-z]{5,7})");
 
     public WordProcessor(TextDeserializer textDeserializer) throws IOException {
         this.textDeserializer = textDeserializer;
-        storeWords(filterWords(textDeserializer.deserialize(originalFileLocation)));
+        storeWords(filterWords(textDeserializer.deserialize(originalFileLocation)), newFileLocation);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class WordProcessor implements WordProcessorInterface {
         List<String> checkedWords = new ArrayList<>();
         for (int i = 0; i < content.size(); i++) {
             String data = content.get(i);
-            Matcher matcher = r.matcher(data);
+            Matcher matcher = pattern.matcher(data);
             if (data.length() >= 5 & data.length() <= 7 & matcher.matches() == true) {
                 checkedWords.add(data);
             }
@@ -35,14 +35,14 @@ public class WordProcessor implements WordProcessorInterface {
     }
 
     @Override
-    public void storeWords(List<String> content) throws IOException {
-        java.io.File myObj = new java.io.File(newFileLocation);
+    public void storeWords(List<String> content, String filelocation) throws IOException {
+        java.io.File myObj = new java.io.File(filelocation);
         if (myObj.createNewFile()) {
             System.out.println("File created" + myObj.getName());
         } else {
             System.out.println("File already exists");
         }
-        FileWriter myWriter = new FileWriter(newFileLocation);
+        FileWriter myWriter = new FileWriter(filelocation);
         myWriter.write(String.valueOf(content));
         myWriter.close();
         System.out.println("Succesfully wrote to file");

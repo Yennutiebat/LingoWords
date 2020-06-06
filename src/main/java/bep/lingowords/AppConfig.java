@@ -3,8 +3,6 @@ package bep.lingowords;
 import application.WordProcessor;
 import infrastructure.TextDeserializer;
 import org.springframework.context.annotation.*;
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 @Configuration

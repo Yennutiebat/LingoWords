@@ -10,9 +10,9 @@ public class TextDeserializer implements FileDeserializerInterface {
 
 
     @Override
-    public List<String> deserialize(String files) throws FileNotFoundException {
+    public List<String> deserialize(String file) throws FileNotFoundException {
         List<String> words = new ArrayList<String>();
-        File myObj = new File(files);
+        File myObj = new File(file);
         Scanner myReader = new Scanner(myObj);
         while (myReader.hasNextLine()) {
             String data = myReader.nextLine();
