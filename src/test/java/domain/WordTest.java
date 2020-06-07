@@ -9,7 +9,7 @@ public class WordTest {
 
     @Test
     @DisplayName("getWord")
-    public void testGetForeignWord() {
+    public void testGetWord() {
         Word Word = new Word("test");
         assertEquals("test", Word.getWord());
     }

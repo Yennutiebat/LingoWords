@@ -5,9 +5,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
-public class CommandLine implements CommandLineRunner {
+public class CommandLine implements CommandLineRunner, CommandLineInterface {
     private final TextDeserializer textDeserializer;
     private final WordProcessor wordProcessor;
     private String originalFileLocation = "src/main/resources/basiswoorden-gekeurd.txt";
@@ -20,6 +21,8 @@ public class CommandLine implements CommandLineRunner {
     }
     @Override
     public void run(String[] args) throws IOException {
-        wordProcessor.storeWords(wordProcessor.filterWords(textDeserializer.deserialize(originalFileLocation)), newFileLocation);
+        List<String> deserializedWords = textDeserializer.deserialize(originalFileLocation);
+        List<String> filterWords = wordProcessor.filterWords(deserializedWords);
+        wordProcessor.storeWords(filterWords, newFileLocation);
     }
 }

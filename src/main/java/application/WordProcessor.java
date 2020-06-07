@@ -18,7 +18,7 @@ public class WordProcessor implements WordProcessorInterface {
         for (int i = 0; i < content.size(); i++) {
             String data = content.get(i);
             Matcher matcher = pattern.matcher(data);
-            if (data.length() >= 5 & data.length() <= 7 & matcher.matches() == true) {
+            if (matcher.matches()) {
                 checkedWords.add(data);
             }
         }
@@ -28,14 +28,9 @@ public class WordProcessor implements WordProcessorInterface {
     @Override
     public void storeWords(List<String> content, String fileLocation) throws IOException {
         java.io.File myObj = new java.io.File(fileLocation);
-        if (myObj.createNewFile()) {
-            System.out.println("File created" + myObj.getName());
-        } else {
-            System.out.println("File already exists");
-        }
+        myObj.createNewFile();
         FileWriter myWriter = new FileWriter(fileLocation);
         myWriter.write(String.valueOf(content));
         myWriter.close();
-        System.out.println("Succesfully wrote to file");
     }
 }

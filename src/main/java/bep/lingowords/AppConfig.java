@@ -5,8 +5,6 @@ import infrastructure.CommandLine;
 import infrastructure.TextDeserializer;
 import org.springframework.context.annotation.*;
 
-import java.io.IOException;
-
 @Configuration
 public class AppConfig {
 
