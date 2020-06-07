@@ -26,5 +26,9 @@ jobs:
       
     - name: run tests
       run: mvn test
+      
+    - name: mutation test
+      run: pitest:mutationCoverage
+      
  
     
