@@ -19,7 +19,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Yennutiebat Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/${env.GITHUB_REPO}</url>
+            <url>${env.DISTRIBUTION_URL}</url>
         </repository>
     </distributionManagement>
     <properties>
