@@ -9,18 +9,17 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/>
     </parent>
-
     <groupId>bep</groupId>
     <artifactId>lingowords</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>lingoWords</name>
+    <name>LingoWords</name>
     <description>LingoWords project for lingoGame</description>
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name></name>
-            <url></url>
+            <name>GitHub Yennutiebat Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/${env.GITHUB_REPO}</url>
         </repository>
     </distributionManagement>
     <properties>
