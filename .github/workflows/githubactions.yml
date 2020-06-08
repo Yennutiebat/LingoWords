@@ -27,8 +27,13 @@ jobs:
     - name: run tests
       run: mvn test
       
-    - name: mutation test
-      run: pitest:mutationCoverage
+    - name: Publish jar to GitHub Packages
+      run: mvn deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISTRIBUTION_ID: github
+        DISTRIBUTION_NAME: LingoWords
+        DISTRIBUTION_URL: https://maven.pkg.github.com/${{ secrets.GITHUB_REPO }}
       
  
     
