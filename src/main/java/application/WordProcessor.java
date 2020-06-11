@@ -1,8 +1,7 @@
 package application;
 
 import org.springframework.stereotype.Service;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -29,8 +28,16 @@ public class WordProcessor implements WordProcessorInterface {
     public void storeWords(List<String> content, String fileLocation) throws IOException {
         java.io.File myObj = new java.io.File(fileLocation);
         myObj.createNewFile();
-        FileWriter myWriter = new FileWriter(fileLocation);
-        myWriter.write(String.valueOf(content));
-        myWriter.close();
+        FileOutputStream fos = new FileOutputStream(myObj);
+
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(fos));
+        for (int i = 0; i < content.size(); i++) {
+            String data = content.get(i);
+            bufferedWriter.write(String.valueOf(data));
+            bufferedWriter.newLine();
+        }
+            bufferedWriter.close();
     }
 }
+
+
