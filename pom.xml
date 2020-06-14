@@ -28,7 +28,7 @@
         <config-class>bep.lingowords.AppConfig</config-class>
         <commandline-class>infrastructure.CommandLine</commandline-class>
         <sonar.projectKey>Yennutiebat_LingoWords</sonar.projectKey>
-        <sonar.organization>Yennutiebat</sonar.organization>
+        <sonar.organization>yennutiebat</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
